@@ -1,0 +1,27 @@
+.container {
+  margin-bottom: 60px !important;
+}
+
+.nav-list {
+  margin-bottom: 0px !important;
+}
+
+.alert {
+  margin-top: 30px !important;
+  animation-duration: 2s;
+    animation-name: bounceIn;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}

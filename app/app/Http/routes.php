@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UsersController@welcome');
+Route::get('/users', 'UsersController@getUsers');
+Route::get('/new_user', 'UsersController@newUser');

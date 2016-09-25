@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
+        <title>Real Time</title>
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url('css/me.css') }}" rel="stylesheet" type="text/css">
+        <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
     </head>
     <body>
+        @section('listado', 'active')
+        @include('menu')
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h1 class="text-center">Datos</h1>
+                        <div class="well">
+                            <input type="text" name="search" class="form-control" placeholder="Buscar usuario..." v-model="search" @keyup="searchUsers">
+                        </div>
+                        <pre>Datos totales: @{{ totalRegisters }} - Temporales: @{{ temporalRegisters }}</pre>
+                        <table class="table table-striped table-hover" id="example">
+                            <thead>
+                                <tr class="info">
+                                    <th>#</th>
+                                    <th>Email</th>
+                                    <th>Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(index, user) in showNow">
+                                    <td>@{{ index + 1 + showBegin }}</td>
+                                    <td>@{{ user.email }}</td>
+                                    <td>@{{ user.name }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn-group btn-group-justified">
+                            <a href="#" class="btn btn-default" @click="previous($event)">Anterior</a>
+                            <a href="#" class="btn btn-default" @click="next($event)">Siguiente</a>
+                        </div> 
+                    </div>
+                </div>
             </div>
         </div>
+
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/vue.js') }}"></script>
+        <script src="{{ asset('js/vue-resource.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
