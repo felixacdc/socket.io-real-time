@@ -1,5 +1,7 @@
 'use strict';
 
+var socket = io('http://192.168.10.10:3000');
+
 $(document).ready(function() {
     new Vue({
 	    el: "body",
@@ -26,19 +28,13 @@ $(document).ready(function() {
 	            alert("error");
 	        });
 
-            /*Pusher.logToConsole = true;
-
             var _this = this;
-		    this.pusher = new Pusher('cb0102088810c7a6e5c0', {
-			  encrypted: true
-			});
 
-		    this.pusherChannel = this.pusher.subscribe('test_channel');
-		    this.pusherChannel.bind("App\\Events\\UserRegistered", function(data) {
-		    	_this.users.unshift(data.user);
-		    	_this.totalRegisters++;
-		    	_this.searchUsers();
-		    });*/
+            socket.on('test-channel:App\\Events\\UserRegistered', function(data) {
+                _this.users.unshift(data.user);
+                _this.totalRegisters++;
+                _this.searchUsers();
+            }.bind(this));
 	    },
 	    methods: {
 	    	searchUsers: function() {

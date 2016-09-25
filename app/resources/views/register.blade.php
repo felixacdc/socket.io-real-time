@@ -26,7 +26,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-6 well bs-component">
           <form class="form-horizontal" action="/save" method="POST">
-            <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <fieldset>
               <legend>Registro</legend>
               <div class="form-group">

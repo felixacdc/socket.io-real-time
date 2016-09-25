@@ -14,3 +14,4 @@
 Route::get('/', 'UsersController@welcome');
 Route::get('/users', 'UsersController@getUsers');
 Route::get('/new_user', 'UsersController@newUser');
+Route::post('save', 'UsersController@saveUser');
